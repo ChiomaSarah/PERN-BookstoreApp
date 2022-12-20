@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  color: #000;
+  font-family: "Monoton", cursive;
+}
+
+.link,
+.link:hover {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: white;
+}
+
+.link {
+  font-size: 20px;
+  color: #000;
+  font-family: "El Messiri", sans-serif;
+}
+
+.page-header {
+  margin-top: 12%;
+}
+
+body {
+  background: rgb(14, 30, 37);
+  color: rgb(242, 242, 242);
+  font-family: "El Messiri", sans-serif;
+}
+
+.pagination > li > a {
+  background-color: #5bc0de;
+  color: #000;
+  margin-top: 20px;
+  padding: 0.7em;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #ddd;
+}
