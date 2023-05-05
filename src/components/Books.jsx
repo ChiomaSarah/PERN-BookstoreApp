@@ -16,7 +16,7 @@ function Books() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://bookstore-api-postgresql.up.railway.app/books"
+          "https://postgresql-bookstore-api.cyclic.app/books"
         );
         const jsonData = await response.json();
         console.log(jsonData);
@@ -32,15 +32,19 @@ function Books() {
   // delete a book from the database
   async function deleteBook(id) {
     try {
-      await fetch(
-        `https://bookstore-api-postgresql.up.railway.app/books/${id}`,
+      const response = await fetch(
+        `https://postgresql-bookstore-api.cyclic.app/books/${id}`,
         {
           method: "DELETE",
         }
       );
 
       setBooks(books.filter((book) => book.book_id !== id));
-      alert("Success: Book deleted!");
+      if (response.ok) {
+        alert("Success: Book deleted!");
+      } else {
+        alert("Error: Could not delete book!");
+      }
     } catch (err) {
       console.error(err.message);
     }
@@ -55,7 +59,7 @@ function Books() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // render the fetched books from the database
-  // if page is loading, display a spinning wheel, else display a tapable
+  // if page is loading, display a spinning wheel, else display a table
 
   if (loading) {
     return <Spinner />;
@@ -67,10 +71,14 @@ function Books() {
 
         <div>
           {/* create a search bar to find a book */}
-          <input type="text" placeholder="search book..." className="form-control mt-5 mb-5 float-right" style={{ width: "20%" }} onChange={(e) => setSearchQuery(e.target.value)} />
-          
-          {/* create a dynamic table */}
-                        {" "}
+          <input
+            type="text"
+            placeholder="search book..."
+            className="form-control mt-5 mb-5 float-right"
+            style={{ width: "20%" }}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {/* create a dynamic table */}{" "}
           <table className="table table-bordered mt-5 ">
             <thead className="thead-dark">
               <tr>
@@ -84,16 +92,21 @@ function Books() {
               </tr>
             </thead>
             <tbody style={{ color: "#fff" }}>
-
               {/* filter the table to return a search term and map the filtered table to display all items */}
               {currentBooks
                 .filter((val) => {
                   if (searchQuery === " ") {
                     return val;
                   } else if (
-                    val.book_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    val.book_author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    val.book_genre.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    val.book_title
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase()) ||
+                    val.book_author
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase()) ||
+                    val.book_genre
+                      .toLowerCase()
+                      .includes(searchQuery.toLowerCase()) ||
                     val.book_publication_date.includes(searchQuery)
                   ) {
                     return val;
@@ -110,17 +123,22 @@ function Books() {
                     <td>{book.book_genre}</td>
                     <td>{book.book_publication_date}</td>
                     <td>
-                    <div className="btn-group">
-                      <UpdateBook book={book} />                   
-                        <button className="btn btn-sm btn-danger ml-3" onClick={() => {
-                            const confirm = window.confirm("Are you sure you want to delete this record?\n\nThis action cannot be undone.");
+                      <div className="btn-group">
+                        <UpdateBook book={book} />
+                        <button
+                          className="btn btn-sm btn-danger ml-3"
+                          onClick={() => {
+                            const confirm = window.confirm(
+                              "Are you sure you want to delete this record?\n\nThis action cannot be undone."
+                            );
                             if (confirm === true) {
                               deleteBook(book.book_id);
                             }
-                          }}>
+                          }}
+                        >
                           Delete
                         </button>
-                        </div>
+                      </div>
                     </td>
                   </tr>
                 ))}
