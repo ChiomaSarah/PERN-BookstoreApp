@@ -29,17 +29,17 @@ function Navbar() {
       <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <Link to="/" className="nav-link" onClick={closeMenu}>
+            <Link to="/" className="nav-link nav-item-link" onClick={closeMenu}>
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/books" className="nav-link" onClick={closeMenu}>
+            <Link to="/books" className="nav-link nav-item-link" onClick={closeMenu}>
               Books
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/add-book" className="nav-link" onClick={closeMenu}>
+            <Link to="/add-book" className="nav-link nav-item-link" onClick={closeMenu}>
               Add Book
             </Link>
           </li>

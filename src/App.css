@@ -19,13 +19,13 @@
     font-family: "Monoton", cursive;
 }
 
-#list{
+.nav-item-link {
   font-size: 20px;
   color: #000;
   font-family: "El Messiri", sans-serif;
 }
 
-#list:hover {
+.nav-item-link:hover {
   color: white;
 }
 
