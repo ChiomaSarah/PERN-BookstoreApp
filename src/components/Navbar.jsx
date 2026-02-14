@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useToken from "../useToken";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
