@@ -22,7 +22,7 @@ function UpdateBook({ book }) {
       };
 
       await fetch(
-        `https://postgresql-bookstore-api.cyclic.app/books/${book.book_id}`,
+        `https://postgresql-bookstore-api.onrender.com/books/${book.book_id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

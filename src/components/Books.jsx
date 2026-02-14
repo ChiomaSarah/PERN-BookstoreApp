@@ -16,7 +16,7 @@ function Books() {
       try {
         setLoading(true);
         const response = await fetch(
-          "https://postgresql-bookstore-api.cyclic.app/books"
+          "https://postgresql-bookstore-api.onrender.com/books"
         );
         const jsonData = await response.json();
         console.log(jsonData);

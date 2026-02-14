@@ -36,7 +36,7 @@ function AddBooks() {
         book_publication_date: book.book_publication_date,
       };
 
-      await fetch("https://postgresql-bookstore-api.cyclic.app/books", {
+      await fetch("https://postgresql-bookstore-api.onrender.com/books", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
