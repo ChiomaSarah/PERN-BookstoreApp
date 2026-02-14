@@ -16,16 +16,16 @@
       #fa811e);
   -webkit-text-fill-color: transparent;
   color: #ff0080;
-    font-family: "Monoton", cursive;
+  font-family: "Monoton", cursive;
 }
 
-.nav-item-link {
+#navbar-list {
   font-size: 20px;
   color: #000;
   font-family: "El Messiri", sans-serif;
 }
 
-.nav-item-link:hover {
+#navbar-list:hover {
   color: white;
 }
 
@@ -39,16 +39,17 @@ body {
   font-family: "El Messiri", sans-serif;
 }
 
-.pagination > li > a {
+.pagination>li>a {
   background-color: #5bc0de;
   color: #000;
   margin-top: 20px;
   padding: 0.7em;
 }
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
   color: #000;
   background-color: #fff;
   border-color: #ddd;
